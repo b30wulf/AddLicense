@@ -12,6 +12,8 @@ cmake ..
 make
 # for windows
 nmake
+# or
+g++ AddLicense.cpp -o addlic
 ```
 ## ADD TO PATH
 ### windows

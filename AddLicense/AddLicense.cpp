@@ -63,7 +63,7 @@ void usage() {
 		"\taddlic mit\n"
 		"\taddlic ls\n"
 		"supported licenses:\n"
-		"\tmti\tMIT License\n"
+		"\tmit\tMIT License\n"
 		"\tgpl\tGNU General Public License v3.0\n"
 		"\tagpl\tGNU Affero General Public License v3.0\n"
 		"\tlgpl\tGNU Lesser General Public License v3.0\n"
@@ -81,62 +81,59 @@ void usage() {
 }
 
 void add(char*name) {
-	if(name == "mti"){
-		MTI mti;
-		cout << mti.getName().c_str() << endl;
-		cout << mti.getDescription().c_str() << endl;
-		write_to_lic_file(mti.getContent());
-		return;
-	}
-	if(name == "gpl"){
+	switch (hash_(name))
+	{
+	case "mit"_hash:
+		MIT mit;
+		cout << mit.getName().c_str() << endl;
+		cout << mit.getDescription().c_str() << endl;
+		write_to_lic_file(mit.getContent());
+		break;
+	case "gpl"_hash:
 		GPLv3 gpl;
 		cout << gpl.getName().c_str() << endl;
 		cout << gpl.getDescription().c_str() << endl;
 		write_to_lic_file(gpl.getContent());
-		return;
-	}
-	if(name == "agpl"){
+		break;
+	case "agpl"_hash:
 		AGPLv3 agpl;
 		cout << agpl.getName().c_str() << endl;
 		cout << agpl.getDescription().c_str() << endl;
 		write_to_lic_file(agpl.getContent());
-		return;
-	}
-	if(name == "lgpl"){
+		break;
+	case "lgpl"_hash:
 		LGPLv3 lgpl;
 		cout << lgpl.getName().c_str() << endl;
 		cout << lgpl.getDescription().c_str() << endl;
 		write_to_lic_file(lgpl.getContent());
-		return;
-	}
-	if(name == "moz"){
+		break;
+	case "moz"_hash:
 		Mozilla moz;
 		cout << moz.getName().c_str() << endl;
 		cout << moz.getDescription().c_str() << endl;
 		write_to_lic_file(moz.getContent());
-		return;
-	}
-	if(name == "apache"){
+		break;
+	case "apache"_hash:
 		Apache apache;
 		cout << apache.getName().c_str() << endl;
 		cout << apache.getDescription().c_str() << endl;
 		write_to_lic_file(apache.getContent());
-		return;
-	}
-	if(name == "unlic"){
+		break;
+	case "unlic"_hash:
 		Unlicense unlic;
 		cout << unlic.getName().c_str() << endl;
 		cout << unlic.getDescription().c_str() << endl;
 		write_to_lic_file(unlic.getContent());
-		return;
+		break;
+	default:
+		break;
 	}
-	return;
 }
 
 void ls() {
 	cout <<
 		"MIT License\n"
-		"command: addlic mti\n"
+		"command: addlic mit\n"
 		"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\n\n"
 		"GNU General Public License v3.0\n"
 		"command: addlic gpl\n"
@@ -164,10 +161,10 @@ void select() {
 	char input;
 	cin >> input;
 	if (input == 'y' || input == 'Y') {
-		cout << "Maybe you need a MTI License. Add it to this path? ([y]/n): " << endl;
+		cout << "Maybe you need a MIT License. Add it to this path? ([y]/n): " << endl;
 		cin >> input;
 		if (input == 'y' || input == 'Y') {
-			add("mti");
+			add("mit");
 			return;
 		}
 		else {
@@ -198,8 +195,8 @@ int main(int argc, char *argv[])
 	}
 	switch (hash_(argv[1]))
 	{
-	case "mti"_hash:
-		add("mti");
+	case "mit"_hash:
+		add("mit");
 		break;
 	case "gpl"_hash:
 		add("gpl");

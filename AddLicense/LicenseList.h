@@ -16,7 +16,7 @@ namespace license {
 	};
 	*/
 
-	class MTI {
+	class MIT {
 	public:
 		std::string getName() {
 			return "MIT License";
