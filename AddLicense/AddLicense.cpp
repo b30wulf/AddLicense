@@ -58,10 +58,10 @@ constexpr unsigned long long operator "" _hash(char const* p, size_t) {
 
 void usage() {
 	cout << DESCRIPTION << "\n"
-		"usage: license [licenses] or [options]\n"
+		"usage: addlic [licenses] or [options]\n"
 		"demo:"
-		"\tlicense mit\n"
-		"\tlicense ls\n"
+		"\taddlic mit\n"
+		"\taddlic ls\n"
 		"supported licenses:\n"
 		"\tmti\tMIT License\n"
 		"\tgpl\tGNU General Public License v3.0\n"
@@ -81,77 +81,80 @@ void usage() {
 }
 
 void add(char*name) {
-	switch (hash_(name))
-	{
-	case "mti"_hash:
+	if(name == "mti"){
 		MTI mti;
 		cout << mti.getName().c_str() << endl;
 		cout << mti.getDescription().c_str() << endl;
 		write_to_lic_file(mti.getContent());
-		break;
-	case "gpl"_hash:
+		return;
+	}
+	if(name == "gpl"){
 		GPLv3 gpl;
 		cout << gpl.getName().c_str() << endl;
 		cout << gpl.getDescription().c_str() << endl;
 		write_to_lic_file(gpl.getContent());
-		break;
-	case "agpl"_hash:
+		return;
+	}
+	if(name == "agpl"){
 		AGPLv3 agpl;
 		cout << agpl.getName().c_str() << endl;
 		cout << agpl.getDescription().c_str() << endl;
 		write_to_lic_file(agpl.getContent());
-		break;
-	case "lgpl"_hash:
+		return;
+	}
+	if(name == "lgpl"){
 		LGPLv3 lgpl;
 		cout << lgpl.getName().c_str() << endl;
 		cout << lgpl.getDescription().c_str() << endl;
 		write_to_lic_file(lgpl.getContent());
-		break;
-	case "moz"_hash:
+		return;
+	}
+	if(name == "moz"){
 		Mozilla moz;
 		cout << moz.getName().c_str() << endl;
 		cout << moz.getDescription().c_str() << endl;
 		write_to_lic_file(moz.getContent());
-		break;
-	case "apache"_hash:
+		return;
+	}
+	if(name == "apache"){
 		Apache apache;
 		cout << apache.getName().c_str() << endl;
 		cout << apache.getDescription().c_str() << endl;
 		write_to_lic_file(apache.getContent());
-		break;
-	case "unlic"_hash:
+		return;
+	}
+	if(name == "unlic"){
 		Unlicense unlic;
 		cout << unlic.getName().c_str() << endl;
 		cout << unlic.getDescription().c_str() << endl;
 		write_to_lic_file(unlic.getContent());
-		break;
-	default:
-		break;
+		return;
 	}
+	return;
 }
 
 void ls() {
 	cout <<
 		"MIT License\n"
-		"command: license mti\n"
+		"command: addlic mti\n"
 		"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\n\n"
 		"GNU General Public License v3.0\n"
-		"command: license gpl\n"
+		"command: addlic gpl\n"
 		"Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.\n\n"
 		"GNU Affero General Public License v3.0\n"
-		"command: license agpl\n"
+		"command: addlic agpl\n"
 		"Permissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.\n\n"
 		"GNU Lesser General Public License v3.0\n"
-		"command: license lgpl\n"
+		"command: addlic lgpl\n"
 		"Permissions of this copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license or the GNU GPLv3. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work through interfaces provided by the licensed work may be distributed under different terms and without source code for the larger work.\n\n"
 		"Mozilla Public License 2.0\n"
-		"command: license moz\n"
+		"command: addlic moz\n"
 		"Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work.\n\n"
 		"Apache License 2.0\n"
 		"command: apache\n"
 		"A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\n\n"
 		"The Unlicense\n"
-		"command: license unlic\n"
+		"command: addlic unlic\n"
 		"A license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code."
 		<< endl;
 }
