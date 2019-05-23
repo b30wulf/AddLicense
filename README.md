@@ -2,6 +2,9 @@
 quick creation of license files.
 
 ## BUILD
+### ENVIRONMENT
+cmake > 3.5
+gcc > 7.0
 ```bash
 git clone https://github.com/kamino-space/AddLicense.git
 cd AddLicense
