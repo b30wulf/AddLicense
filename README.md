@@ -30,7 +30,7 @@ usage: addlic [licenses] or [options]
 demo:   addlic mit
         addlic ls
 supported licenses:
-        mti     MIT License
+        mit     MIT License
         gpl     GNU General Public License v3.0
         agpl    GNU Affero General Public License v3.0
         lgpl    GNU Lesser General Public License v3.0
@@ -46,4 +46,4 @@ supported options:
 ```
 
 # LICENSE
-MTI
+MIT
